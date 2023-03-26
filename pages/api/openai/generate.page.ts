@@ -20,11 +20,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return;
   }
 
-  const animal = req.body.animal || '';
-  if (animal.trim().length === 0) {
+  const country = req.body.country || '';
+  const days = req.body.days || '1';
+  if (country.trim().length === 0) {
     res.status(400).json({
       error: {
-        message: 'Please enter a valid animal',
+        message: 'Please enter a valid country',
       },
     });
     return;
@@ -33,10 +34,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const completion = await openai.createCompletion({
       model: 'text-davinci-003',
-      prompt: generatePrompt(animal),
+      prompt: generatePrompt(country, days),
       temperature: 0.6,
+      max_tokens: 2048,
     });
-    res.status(200).json({ result: completion.data.choices[0].text });
+    console.log(completion.data.choices[0].text);
+    // console.log(JSON.parse(completion.data.choices[0].text));
+    const responseJSON = completion.data.choices[0].text || '';
+    if (responseJSON) {
+      res.status(200).json({ result: JSON.parse(responseJSON) });
+    }
+    // console.log(completion.data.choices[0].text?.replace(/^\s+|\s+$/g, ''));
   } catch (error) {
     // Consider adjusting the error handling logic for your use case
     if (error instanceof AxiosError) {
@@ -53,14 +61,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 }
 
-function generatePrompt(animal: string) {
-  const capitalizedAnimal = animal[0].toUpperCase() + animal.slice(1).toLowerCase();
-  return `Suggest three names for an animal that is a superhero.
-
-Animal: Cat
-Names: Captain Sharpclaw, Agent Fluffball, The Incredible Feline
-Animal: Dog
-Names: Ruff the Protector, Wonder Canine, Sir Barks-a-Lot
-Animal: ${capitalizedAnimal}
-Names:`;
+function generatePrompt(country: string, days: string) {
+  const capitalizedCountry = country[0].toUpperCase() + country.slice(1).toLowerCase();
+  // return `Write 10 places that I need to visit as a tourist in ${capitalizedCountry}, if there is no such place, then tell me about it`;
+  return `Create a valid JSON array of 2 objects to list famous tourist places in ${capitalizedCountry} or return null if this place doesn't exist. Example: [{
+  \"id\": \"Unique identifier\", 
+  \"name\": \"Place name\", 
+  \"description\": \"Short description\",
+  }]
+  
+  Do not escape the double quotes in the output and don't use newline: The JSON object is:`;
 }

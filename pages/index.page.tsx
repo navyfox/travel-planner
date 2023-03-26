@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import TravelForm from '@/widgets/TravelForm';
+import TravelForm from '@/widgets/travel-form';
 
 export default function Home() {
   return (
