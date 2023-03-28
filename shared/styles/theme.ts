@@ -2,10 +2,16 @@ const theme = {
   fonts: {
     default: "'ColfaxAI', Helvetica, sans-serif",
   },
+  heading: {
+    h3: '32px',
+  },
   colors: {
     black: '#000000',
     white: '#ffffff',
-    skyBlue: '#34bde3',
+    pictonBlue: '#34bde3',
+    persianGreen: '#10a38f',
+    coolGrey: '#8e8ea0',
+    onyx: '#353740',
   },
   fontSizes: {
     xxs: '10px',

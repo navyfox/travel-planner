@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import theme from '@/shared/styles/theme';
+import media from '@/shared/styles/media';
 
 export const Main = styled.main`
   display: flex;
@@ -9,47 +10,33 @@ export const Main = styled.main`
   font-family: ${theme.fonts.default};
 
   &:placeholder {
-    color: #8e8ea0;
+    color: ${theme.colors.coolGrey};
     opacity: 1;
   }
 `;
 
-export const Link = styled.a`
-  color: #34bde3;
-  text-decoration: none;
+export const Title = styled.h1`
+  font-size: 38px;
+  line-height: 40px;
+  font-weight: bold;
+  color: ${theme.colors.pictonBlue};
 `;
 
 export const Input = styled.input`
   font-size: 16px;
   line-height: 24px;
-  color: #353740;
+  color: ${theme.colors.onyx};
   font-family: ${theme.fonts.default};
 
   &[type='submit'] {
     padding: 12px 0;
-    color: #fff;
-    background-color: ${theme.colors.skyBlue};
+    color: ${theme.colors.white};
+    background-color: ${theme.colors.pictonBlue};
     border: none;
     border-radius: 4px;
     text-align: center;
     cursor: pointer;
   }
-
-  &[type='text'] {
-    padding: 12px 16px;
-    border: 1px solid ${theme.colors.skyBlue};
-    border-radius: 4px;
-    margin-bottom: 24px;
-    outline-color: #10a38f;
-  }
-`;
-
-export const H3 = styled.h3`
-  font-size: 32px;
-  line-height: 40px;
-  font-weight: bold;
-  color: #202123;
-  margin: 16px 0 40px;
 `;
 
 export const Form = styled.form<{
@@ -57,7 +44,13 @@ export const Form = styled.form<{
 }>`
   display: flex;
   flex-direction: column;
-  width: 320px;
+  width: 100%;
+  max-width: 315px;
+  padding: 0px 5px;
+
+  ${media.tablet} {
+    max-width: 580px;
+  }
 `;
 
 export const Result = styled.div`

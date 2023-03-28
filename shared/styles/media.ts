@@ -3,3 +3,5 @@ export const media = {
   tablet: `@media (min-width: ${640}px)`,
   desktop: `@media (min-width: ${1200}px)`,
 };
+
+export default media;

@@ -21,7 +21,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   const country = req.body.country || '';
-  const days = req.body.days || '1';
   if (country.trim().length === 0) {
     res.status(400).json({
       error: {
@@ -34,7 +33,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const completion = await openai.createCompletion({
       model: 'text-davinci-003',
-      prompt: generatePrompt(country, days),
+      prompt: generatePrompt(country),
       temperature: 0.6,
       max_tokens: 2048,
     });
@@ -61,7 +60,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 }
 
-function generatePrompt(country: string, days: string) {
+function generatePrompt(country: string) {
   const capitalizedCountry = country[0].toUpperCase() + country.slice(1).toLowerCase();
   // return `Write 10 places that I need to visit as a tourist in ${capitalizedCountry}, if there is no such place, then tell me about it`;
   return `Create a valid JSON array of 2 objects to list famous tourist places in ${capitalizedCountry} or return null if this place doesn't exist. Example: [{
