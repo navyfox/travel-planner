@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// import { AxiosError } from 'axios';
 import { ITopPlace } from '@/shared/ui/places-list';
 import { generate } from '../lib/api';
 
@@ -18,7 +17,6 @@ export const useTravelData = () => {
       if (response.status !== 200) {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
-      // console.log(data.result);
       setResult(data.result);
       // setResult([
       //   {

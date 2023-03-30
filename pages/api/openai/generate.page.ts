@@ -38,14 +38,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       max_tokens: 2048,
     });
     console.log(completion.data.choices[0].text);
-    // console.log(JSON.parse(completion.data.choices[0].text));
     const responseJSON = completion.data.choices[0].text || '';
     if (responseJSON) {
       res.status(200).json({ result: JSON.parse(responseJSON) });
     }
-    // console.log(completion.data.choices[0].text?.replace(/^\s+|\s+$/g, ''));
   } catch (error) {
-    // Consider adjusting the error handling logic for your use case
+    // WIP Consider adjusting the error handling logic for your use case
     if (error instanceof AxiosError) {
       console.error(error?.response?.status, error?.response?.data);
       res.status(error?.response?.status || 400).json(error?.response?.data);
@@ -62,7 +60,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 function generatePrompt(country: string) {
   const capitalizedCountry = country[0].toUpperCase() + country.slice(1).toLowerCase();
-  // return `Write 10 places that I need to visit as a tourist in ${capitalizedCountry}, if there is no such place, then tell me about it`;
   return `Create a valid JSON array of 2 objects to list famous tourist places in ${capitalizedCountry} or return null if this place doesn't exist. Example: [{
   \"id\": \"Unique identifier\", 
   \"name\": \"Place name\", 
