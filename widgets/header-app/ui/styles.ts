@@ -2,10 +2,10 @@ import styled from '@emotion/styled';
 import theme from '@/shared/styles/theme';
 
 export const SingOutButton = styled.button`
-  background: #fff;
-  border: 1px solid #6d758d;
+  background: ${theme.colors.white};
+  border: 1px solid ${theme.colors.raven};
   border-radius: 4px;
-  color: #4d536e;
+  color: ${theme.colors.fiord};
   outline: none;
   align-items: center;
   border-radius: 6px;
@@ -20,10 +20,10 @@ export const SingOutButton = styled.button`
   margin: 10px;
 
   &:focus {
-    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #005fcc;
+    box-shadow: 0 0 0 2px ${theme.colors.white}, 0 0 0 4px ${theme.colors.scienceBlue};
   }
   &:hover {
-    background: #f9faff;
+    background: ${theme.colors.zircon};
   }
 `;
 export const Header = styled.div`

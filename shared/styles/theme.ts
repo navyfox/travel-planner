@@ -12,6 +12,10 @@ const theme = {
     persianGreen: '#10a38f',
     coolGrey: '#8e8ea0',
     onyx: '#353740',
+    fiord: '#4d536e',
+    raven: '#6d758d',
+    scienceBlue: '#005fcc',
+    zircon: '#f9faff',
   },
   fontSizes: {
     xxs: '10px',

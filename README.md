@@ -1,8 +1,10 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Enter the destination and get the top places to visit. This application is an example of using architecture [`feature-sliced`](https://feature-sliced.design/) and [`chatGPT`](https://platform.openai.com/docs/introduction). To see the project, follow the [link](https://travel-planner-mu.vercel.app/login). This project is a simple code demonstration. If you want to see my [CV](https://docs.google.com/document/d/1mctluo9es_PQcvOSOGgQKwYjiMGAaex0sdh60AYTuEI/)
 
 ## Getting Started
 
-First, run the development server:
+First create .env.development with env variables.
+
+Second, run the development server:
 
 ```bash
 npm run dev
@@ -14,25 +16,14 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## ENV
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+OPENAI_API_KEY - key for ChatGPT
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+GOOGLE_CLIENT_ID - id for google credentials(https://developers.google.com/identity/protocols/oauth2)
 
-## Learn More
+GOOGLE_CLIENT_SECRET - secret for google credentials
 
-To learn more about Next.js, take a look at the following resources:
+NEXTAUTH_SECRET - secret for next auth plugin(for production only)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

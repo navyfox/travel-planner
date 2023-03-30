@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import theme from '@/shared/styles/theme';
-// import media from '@/shared/styles/media';
 
 export const Input = styled.input`
   font-size: 16px;

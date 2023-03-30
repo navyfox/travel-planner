@@ -1,6 +1,7 @@
 import { Configuration, OpenAIApi } from 'openai';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { AxiosError } from 'axios';
+import CryptoJS from 'crypto-js';
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -21,23 +22,26 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   const country = req.body.country || '';
-  if (country.trim().length === 0) {
+  const email = req.body.email || '';
+  if (country.trim().length === 0 || !email) {
     res.status(400).json({
       error: {
-        message: 'Please enter a valid country',
+        message: 'Please enter a valid country and user',
       },
     });
     return;
   }
+
+  const user = CryptoJS.enc.Base64.stringify(CryptoJS.MD5(email));
 
   try {
     const completion = await openai.createCompletion({
       model: 'text-davinci-003',
       prompt: generatePrompt(country),
       temperature: 0.6,
+      user,
       max_tokens: 2048,
     });
-    console.log(completion.data.choices[0].text);
     const responseJSON = completion.data.choices[0].text || '';
     if (responseJSON) {
       res.status(200).json({ result: JSON.parse(responseJSON) });
