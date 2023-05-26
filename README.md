@@ -1,4 +1,4 @@
-Enter the destination and get the top places to visit. This application is an example of using architecture [`feature-sliced`](https://feature-sliced.design/) and [`chatGPT`](https://platform.openai.com/docs/introduction). To see the project, follow the [link](https://travel-planner-mu.vercel.app/login). This project is a simple code demonstration. If you want to see my [CV](https://docs.google.com/document/d/1mctluo9es_PQcvOSOGgQKwYjiMGAaex0sdh60AYTuEI/)
+Enter the destination and get the top places to visit. This application is an example of using architecture [`feature-sliced`](https://feature-sliced.design/) and [`chatGPT`](https://platform.openai.com/docs/introduction). To see the project, follow the [link](https://travel-planner-mu.vercel.app/login). This project is a simple code demonstration.
 
 ## Getting Started
 
